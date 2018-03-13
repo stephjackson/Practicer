@@ -1,2 +1,21 @@
-<p>item-details works!</p>
-<a [routerLink]="['']">Home</a>
+<h1> Item details </h1>
+<a [routerLink]="['']"> Back to item list </a>
+
+<div *ngIf="item">
+  <h2> {{ item.title }}&nbsp;</h2>
+  <p> {{ item.bpm }} </p>
+  <p> {{ item.time }} </p>
+  
+  <div *ngIf="item.stats.length">
+    <p>Stats:</p>
+    <ul>
+      <li *ngFor="let stat of item.stats">
+        <p>BPM: {{ stat.bpm }}</p>
+        <p>Date: {{ stat.date | date: 'short' }}</p>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="!item.stats.length">
+    <p>No Stats Yet</p>
+  </div>
+</div>
