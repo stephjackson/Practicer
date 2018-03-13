@@ -13,11 +13,20 @@ const ItemSchema = new Schema({
   bpm: {
     type: Number
   },
-  list: {
+  lists: [{
     type: Schema.Types.ObjectId,
-    ref: 'List',
-    required: true
-  }
+    ref: 'List'
+  }],
+  stats: [{
+    bpm: {
+      type: Number,
+      required: true
+    },
+    date: {
+      type: Date,
+      required: true
+    }
+  }]
 },
   {
     timestamps: true

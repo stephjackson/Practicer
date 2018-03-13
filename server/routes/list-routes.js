@@ -79,7 +79,7 @@ listRoutes.get('/:listid', (req, res, next) => {
     res.status(401).json({ message: "Log in to see the items in this list." });
     return;
   }
-  Item.find({ list: req.params.listid })
+  Item.find({ lists: req.params.listid })
     .populate('List')
     .exec((err, allTheItems) => {
       if (err) {

@@ -57,7 +57,7 @@ var listRoutes = require('./routes/list-routes')
 app.use('/api/lists', listRoutes);
 
 var itemRoutes = require('./routes/item-routes')
-app.use('/', itemRoutes);
+app.use('/api/items', itemRoutes);
 
 app.use((req, res, next) => {
   // If no routes match, send them the Angular HTML.
