@@ -6,10 +6,10 @@ const User = require('../models/user-model')
 const Item = require('../models/item-model')
 
 listRoutes.post('/new', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: "Log in to create a practice session" });
-    return;
-  }
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to create a practice session" });
+  //   return;
+  // }
 
   const newList = new List({
     title: req.body.listTitle,
@@ -32,11 +32,14 @@ listRoutes.post('/new', (req, res, next) => {
 })
 
 listRoutes.get('/', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: "Log in to see your lists." });
-    return;
-  }
-  List.find({ user: req.user._id })
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to see your lists." });
+  //   return;
+  // }
+
+  //!!!!!CHANGE BACK LATER!!!!!//
+  // List.find({ user: req.user._id })
+  List.find({ user: '5aa7d0f467f9e7e5241d4291' })
     .populate('User', { encryptedPassword: 0 })
     .exec((err, allTheLists) => {
       if (err) {
@@ -49,10 +52,10 @@ listRoutes.get('/', (req, res, next) => {
 })
 
 listRoutes.delete('/:listid', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: 'Log in to delete a list' })
-    return;
-  }
+  // if (!req.user) {
+  //   res.status(401).json({ message: 'Log in to delete a list' })
+  //   return;
+  // }
 
   if (!mongoose.Types.ObjectId.isValid(req.params.listid)) {
     res.status(400).json({ message: 'Specified list id is not valid.' })
@@ -75,10 +78,10 @@ listRoutes.delete('/:listid', (req, res, next) => {
 })
 
 listRoutes.get('/:listid', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: "Log in to see the items in this list." });
-    return;
-  }
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to see the items in this list." });
+  //   return;
+  // }
   Item.find({ lists: req.params.listid })
     .populate('List')
     .exec((err, allTheItems) => {

@@ -6,10 +6,10 @@ const User = require('../models/user-model');
 const Item = require('../models/item-model');
 
 itemRoutes.post('/new/', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: "Log in to add an item to this list" });
-    return;
-  }
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to add an item to this list" });
+  //   return;
+  // }
 
   const newItem = new Item({
     title: req.body.itemTitle,
@@ -33,10 +33,10 @@ itemRoutes.post('/new/', (req, res, next) => {
 })
 
 itemRoutes.put('/add/:listid/:itemid', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: "Log in to add an item to this list" });
-    return;
-  }
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to add an item to this list" });
+  //   return;
+  // }
 
   List.findByIdAndUpdate(req.params.listid, { '$push': { 'items': req.params.itemid } }, err => {
     if (err) {
@@ -57,10 +57,10 @@ itemRoutes.put('/add/:listid/:itemid', (req, res, next) => {
 })
 
 itemRoutes.get('/:itemid', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: "Log in to see an individual list item." });
-    return;
-  }
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to see an individual list item." });
+  //   return;
+  // }
   if (!mongoose.Types.ObjectId.isValid(req.params.itemid)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
@@ -77,10 +77,10 @@ itemRoutes.get('/:itemid', (req, res, next) => {
 })
 
 itemRoutes.put('/:itemid', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: "Log in to update an individual list item." });
-    return;
-  }
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to update an individual list item." });
+  //   return;
+  // }
   if (!mongoose.Types.ObjectId.isValid(req.params.itemid)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
@@ -105,10 +105,10 @@ itemRoutes.put('/:itemid', (req, res, next) => {
 })
 
 itemRoutes.put('/:itemid/track', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: "Log in to update an individual list item." });
-    return;
-  }
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to update an individual list item." });
+  //   return;
+  // }
   if (!mongoose.Types.ObjectId.isValid(req.params.itemid)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
@@ -153,10 +153,10 @@ itemRoutes.put('/:itemid/track', (req, res, next) => {
 })
 
 itemRoutes.delete('/:listid/:itemid', (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({ message: 'Log in to delete a list item' })
-    return;
-  }
+  // if (!req.user) {
+  //   res.status(401).json({ message: 'Log in to delete a list item' })
+  //   return;
+  // }
 
   if (!mongoose.Types.ObjectId.isValid(req.params.listid) || !mongoose.Types.ObjectId.isValid(req.params.itemid)) {
     res.status(400).json({ message: 'Specified item id is not valid.' })

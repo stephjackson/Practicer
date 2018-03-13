@@ -1,0 +1,9 @@
+<h1> Item list </h1>
+    <div>
+      <div *ngFor="let item of items">
+        <h3> {{ item.title }} </h3>
+        <p>Seconds: {{ item.time }} </p>
+        <p>BPM: {{ item.bpm }} </p>
+        <a [routerLink]="['item', item._id]">View Details</a>
+      </div>
+    </div>
