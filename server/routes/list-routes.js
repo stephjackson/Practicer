@@ -39,7 +39,7 @@ listRoutes.get('/', (req, res, next) => {
 
   //!!!!!CHANGE BACK LATER!!!!!//
   // List.find({ user: req.user._id })
-  List.find({ user: '5aa7d0f467f9e7e5241d4291' })
+  List.find({ user: '5aa8356af4a734fb2c4df356' })
     .populate('User', { encryptedPassword: 0 })
     .exec((err, allTheLists) => {
       if (err) {

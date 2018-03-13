@@ -1,0 +1,8 @@
+<h4>Add Item to List</h4>
+<ul>
+  <li *ngFor = "let list of lists">
+    <p>{{ list.title }}</p>
+    <p>{{ list._id }}</p>
+    <button (click)="addItemToList(list._id, itemId)"> Add Item to List </button>
+  </li>
+</ul>

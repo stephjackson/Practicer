@@ -10,9 +10,13 @@
     <ul>
       <li *ngFor="let list of item.lists">
         <p>List: {{ list }}</p>
+        <button (click)="removeItemFromList(list, item._id)">Remove Item From List</button>
       </li>
     </ul>
   </div>
+
+  <app-add-item-to-list-form *ngIf = "!item.lists.length" [itemId]="item._id"></app-add-item-to-list-form>
+
   <div *ngIf="item.stats.length">
     <p>Stats:</p>
     <ul>

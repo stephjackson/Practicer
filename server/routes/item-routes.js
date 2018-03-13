@@ -70,8 +70,8 @@ itemRoutes.put('/add/:listid/:itemid', (req, res, next) => {
         res.status(500).json({ message: err })
         return;
       };
-
-      req.user.encryptedPassword = undefined;
+      //!!!FIX!!!
+      // req.user.encryptedPassword = undefined;
       res.status(200).json('Item added to list!');
     })
   })
@@ -192,6 +192,23 @@ itemRoutes.delete('/:listid/:itemid', (req, res, next) => {
 
     List.findByIdAndUpdate(req.params.listid, { '$pull': { 'items': req.params.itemid } }, err => {
       if (err) { res.status(500).json({ message: 'Error deleting list item from list db array' }) };
+      res.json({
+        message: "Item has been removed."
+      })
+    })
+  })
+})
+
+itemRoutes.put('/remove/:listid/:itemid', (req, res, next) => {
+  // if (!req.user) {
+  //   res.status(401).json({ message: 'Log in to delete a list item' })
+  //   return;
+  // }
+
+  List.findByIdAndUpdate(req.params.listid, { '$pull': { 'items': req.params.itemid } }, err => {
+    if (err) { res.status(500).json({ message: 'Error deleting list item from list db array' }) };
+    Item.findByIdAndUpdate(req.params.itemid, { '$pull': { 'lists': req.params.listid } }, err => {
+      if (err) { res.status(500).json({ message: 'Error deleting list id from item db array' }) };
       res.json({
         message: "Item has been removed."
       })

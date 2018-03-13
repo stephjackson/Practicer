@@ -18,4 +18,6 @@ export class ItemListComponent implements OnInit {
       this.items = items;
     })
   }
+
+  
 }

@@ -23,5 +23,11 @@ export class ItemDetailsComponent implements OnInit {
       .subscribe((item) => {
         this.item = item;
       });
-  }        
+  }   
+  
+  removeItemFromList(listid, itemid) {
+    this.itemService.removeItemFromList(listid, itemid)
+    this.getItemDetails(itemid)
+    location.reload();
+  }
 }

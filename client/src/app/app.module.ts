@@ -9,13 +9,15 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { ItemService } from './item.service';
 import { ItemFormComponent } from './item-form/item-form.component';
+import { AddItemToListFormComponent } from './add-item-to-list-form/add-item-to-list-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemListComponent,
     ItemDetailsComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    AddItemToListFormComponent
   ],
   imports: [
     BrowserModule,

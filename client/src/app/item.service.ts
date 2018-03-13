@@ -31,6 +31,16 @@ export class ItemService {
     return this.http.get(`${this.BASE_URL}/api/items/`)
     .map((res) => res.json());
   }
+
+  addItemToList(listid, itemid) {
+    this.http.put(`${this.BASE_URL}/api/items/add/${listid}/${itemid}`, {})
+    .subscribe(err => console.log(err))
+  }
+
+  removeItemFromList(listid, itemid) {
+    this.http.put(`${this.BASE_URL}/api/items/remove/${listid}/${itemid}`, {})
+    .subscribe(err => console.log(err))
+  }
   
   edit(phone) {
     return this.http.put(`${this.BASE_URL}/api/phones/${phone.id}`, phone)

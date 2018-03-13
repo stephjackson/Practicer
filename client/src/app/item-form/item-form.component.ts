@@ -25,5 +25,6 @@ export class ItemFormComponent implements OnInit {
   insertItem() {
     this.itemService.insertItem(this.newItem);
     this.newItem = {};
+    location.reload();
   }
 }
