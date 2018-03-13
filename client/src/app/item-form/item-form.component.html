@@ -1,0 +1,8 @@
+<h4>New List Item</h4>
+<label>Title</label>
+<input type="text" [(ngModel)]="newItem.itemTitle">
+<label>Time</label>
+<input type="text" [(ngModel)]="newItem.itemTime">
+<label>BPM</label>
+<input type="number" [(ngModel)]="newItem.itemBpm">
+<button (click)="insertItem()"> Save Entry </button>

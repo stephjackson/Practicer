@@ -25,8 +25,9 @@ itemRoutes.post('/new/', (req, res, next) => {
 
     List.findByIdAndUpdate(req.params.listid, { '$push': { 'items': newItem._id } }, err => {
       if (err) { res.status(500).json({ message: 'Error adding item to list db array' }) };
-      req.user.encryptedPassword = undefined;
-      newItem.user = req.user;
+      ///!!!FIX!!!
+      // req.user.encryptedPassword = undefined;
+      // newItem.user = req.user;
       res.status(200).json(newItem);
     })
   })
