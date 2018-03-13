@@ -22,6 +22,11 @@ export class ItemService {
     .map((res) => res.json());
   }
 
+  getListsExcludingItem(id) {
+    return this.http.get(`${this.BASE_URL}/api/lists/excludes/${id}`)
+    .map((res) => res.json());
+  }
+
   insertItem(item) {
     this.http.post(`${this.BASE_URL}/api/items/new`, item)
       .subscribe(err => console.log(err))
@@ -47,8 +52,8 @@ export class ItemService {
       .map((res) => res.json());
   }
   
-  remove(id) {
-    return this.http.delete(`${this.BASE_URL}/api/phones/${id}`)
-      .map((res) => res.json());
+  deleteItem(id) {
+    return this.http.delete(`${this.BASE_URL}/api/items/${id}`)
+    .subscribe(err => console.log(err))
   }
 }

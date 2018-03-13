@@ -9,15 +9,19 @@ import { ItemService } from '../item.service';
 export class ItemListComponent implements OnInit {
   items;
 
-  constructor(private item: ItemService) { }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
     //FIX THIS
-    this.item.getAllItems()
+    this.itemService.getAllItems()
     .subscribe((items) => {
       this.items = items;
     })
   }
 
-  
+  deleteItem(id) {
+    console.log(id);
+    this.itemService.deleteItem(id);
+    location.reload();
+  }
 }

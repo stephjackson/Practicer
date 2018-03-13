@@ -17,14 +17,7 @@ export class AddItemToListFormComponent implements OnInit {
   private router: Router) { }
 
   ngOnInit() {
-    this.itemService.getList()
-    .subscribe((lists) => {
-      this.lists = lists;
-    })
-  }
-
-  regetList() {
-    this.itemService.getList()
+    this.itemService.getListsExcludingItem(this.itemId)
     .subscribe((lists) => {
       this.lists = lists;
     })
@@ -32,7 +25,6 @@ export class AddItemToListFormComponent implements OnInit {
 
   addItemToList(listid, itemid) {
     this.itemService.addItemToList(listid, itemid)
-    this.regetList();
     location.reload();
   }
 }

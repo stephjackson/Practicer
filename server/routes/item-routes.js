@@ -23,13 +23,13 @@ itemRoutes.post('/new/', (req, res, next) => {
       return;
     }
 
-    List.findByIdAndUpdate(req.params.listid, { '$push': { 'items': newItem._id } }, err => {
-      if (err) { res.status(500).json({ message: 'Error adding item to list db array' }) };
-      ///!!!FIX!!!
-      // req.user.encryptedPassword = undefined;
-      // newItem.user = req.user;
-      res.status(200).json(newItem);
-    })
+    // List.findByIdAndUpdate(req.params.listid, { '$push': { 'items': newItem._id } }, err => {
+    //   if (err) { res.status(500).json({ message: 'Error adding item to list db array' }) };
+    //   ///!!!FIX!!!
+    //   // req.user.encryptedPassword = undefined;
+    //   // newItem.user = req.user;
+    //   res.status(200).json(newItem);
+    // })
   })
 })
 
@@ -173,13 +173,13 @@ itemRoutes.put('/:itemid/track', (req, res, next) => {
   })
 })
 
-itemRoutes.delete('/:listid/:itemid', (req, res, next) => {
+itemRoutes.delete('/:itemid', (req, res, next) => {
   // if (!req.user) {
   //   res.status(401).json({ message: 'Log in to delete a list item' })
   //   return;
   // }
 
-  if (!mongoose.Types.ObjectId.isValid(req.params.listid) || !mongoose.Types.ObjectId.isValid(req.params.itemid)) {
+  if (!mongoose.Types.ObjectId.isValid(req.params.itemid)) {
     res.status(400).json({ message: 'Specified item id is not valid.' })
     return;
   }
@@ -190,7 +190,7 @@ itemRoutes.delete('/:listid/:itemid', (req, res, next) => {
       return;
     }
 
-    List.findByIdAndUpdate(req.params.listid, { '$pull': { 'items': req.params.itemid } }, err => {
+    List.updateMany({ items: req.params.itemid }, { '$pull': { 'items': req.params.itemid } }, err => {
       if (err) { res.status(500).json({ message: 'Error deleting list item from list db array' }) };
       res.json({
         message: "Item has been removed."

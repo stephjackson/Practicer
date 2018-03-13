@@ -51,6 +51,26 @@ listRoutes.get('/', (req, res, next) => {
     })
 })
 
+listRoutes.get('/excludes/:itemid', (req, res, next) => {
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to see your lists." });
+  //   return;
+  // }
+
+  //!!!!!CHANGE BACK LATER!!!!!//
+  // List.find({ user: req.user._id })
+  List.find({ items: { $ne: req.params.itemid } })
+    .populate('Item')
+    .exec((err, allTheLists) => {
+      if (err) {
+        res.status(500).json({ message: 'Show all lists search threw an error.' })
+        return;
+      }
+
+      res.status(200).json(allTheLists);
+    })
+})
+
 listRoutes.delete('/:listid', (req, res, next) => {
   // if (!req.user) {
   //   res.status(401).json({ message: 'Log in to delete a list' })

@@ -15,7 +15,7 @@
     </ul>
   </div>
 
-  <app-add-item-to-list-form *ngIf = "!item.lists.length" [itemId]="item._id"></app-add-item-to-list-form>
+  <app-add-item-to-list-form [itemId]="item._id"></app-add-item-to-list-form>
 
   <div *ngIf="item.stats.length">
     <p>Stats:</p>
