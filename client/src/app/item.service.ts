@@ -47,9 +47,9 @@ export class ItemService {
     .subscribe(err => console.log(err))
   }
   
-  edit(phone) {
-    return this.http.put(`${this.BASE_URL}/api/phones/${phone.id}`, phone)
-      .map((res) => res.json());
+  editItem(id, item) {
+    return this.http.put(`${this.BASE_URL}/api/items/${id}`, item)
+    .subscribe(err => console.log(err))
   }
   
   deleteItem(id) {

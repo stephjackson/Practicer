@@ -3,8 +3,8 @@
 
 <div *ngIf="item">
   <h2> {{ item.title }}&nbsp;</h2>
-  <p> {{ item.bpm }} </p>
-  <p> {{ item.time }} </p>
+  <p>BPM: {{ item.bpm }} </p>
+  <p>Time: {{ item.time }} </p>
   
   <div *ngIf = "item.lists.length">
     <ul>
@@ -16,7 +16,7 @@
   </div>
 
   <app-add-item-to-list-form [itemId]="item._id"></app-add-item-to-list-form>
-
+  <app-edit-item-form [itemId]="item._id"></app-edit-item-form>
   <div *ngIf="item.stats.length">
     <p>Stats:</p>
     <ul>

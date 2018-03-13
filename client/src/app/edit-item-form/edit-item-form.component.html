@@ -1,0 +1,8 @@
+<h1>Edit Item</h1>
+<label>Title</label>
+<input type="text" [(ngModel)]="newItem.itemTitle">
+<label>Time</label>
+<input type="text" [(ngModel)]="newItem.itemTime">
+<label>BPM</label>
+<input type="number" [(ngModel)]="newItem.itemBpm">
+<button (click)="editItem()"> Save Entry </button>

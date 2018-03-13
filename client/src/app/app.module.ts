@@ -10,6 +10,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { ItemService } from './item.service';
 import { ItemFormComponent } from './item-form/item-form.component';
 import { AddItemToListFormComponent } from './add-item-to-list-form/add-item-to-list-form.component';
+import { EditItemFormComponent } from './edit-item-form/edit-item-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AddItemToListFormComponent } from './add-item-to-list-form/add-item-to-
     ItemListComponent,
     ItemDetailsComponent,
     ItemFormComponent,
-    AddItemToListFormComponent
+    AddItemToListFormComponent,
+    EditItemFormComponent
   ],
   imports: [
     BrowserModule,
