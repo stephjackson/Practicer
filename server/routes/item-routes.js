@@ -33,6 +33,26 @@ itemRoutes.post('/new/', (req, res, next) => {
   })
 })
 
+itemRoutes.get('/', (req, res, next) => {
+  // if (!req.user) {
+  //   res.status(401).json({ message: "Log in to see your lists." });
+  //   return;
+  // }
+
+  //!!!!!CHANGE BACK LATER!!!!!//
+  // List.find({ user: req.user._id })
+  Item.find({})
+    .populate('List')
+    .exec((err, allTheItems) => {
+      if (err) {
+        res.status(500).json({ message: 'Show all unplaced items search threw an error.' })
+        return;
+      }
+
+      res.status(200).json(allTheItems);
+    })
+})
+
 itemRoutes.put('/add/:listid/:itemid', (req, res, next) => {
   // if (!req.user) {
   //   res.status(401).json({ message: "Log in to add an item to this list" });

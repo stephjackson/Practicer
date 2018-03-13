@@ -26,6 +26,11 @@ export class ItemService {
     this.http.post(`${this.BASE_URL}/api/items/new`, item)
       .subscribe(err => console.log(err))
   }
+
+  getAllItems() {
+    return this.http.get(`${this.BASE_URL}/api/items/`)
+    .map((res) => res.json());
+  }
   
   edit(phone) {
     return this.http.put(`${this.BASE_URL}/api/phones/${phone.id}`, phone)

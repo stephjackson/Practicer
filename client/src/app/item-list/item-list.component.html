@@ -2,7 +2,7 @@
   <div>
     <div *ngFor="let item of items">
       <h3> {{ item.title }} </h3>
-      <a [routerLink]="['item', item._id]">View Details</a>
+      <a [routerLink]="[item._id]">View Details</a>
     </div>
   </div>
 <app-item-form></app-item-form>

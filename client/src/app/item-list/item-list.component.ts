@@ -13,7 +13,7 @@ export class ItemListComponent implements OnInit {
 
   ngOnInit() {
     //FIX THIS
-    this.item.getItemList('5aa7d15b67f9e7e5241d4292')
+    this.item.getAllItems()
     .subscribe((items) => {
       this.items = items;
     })

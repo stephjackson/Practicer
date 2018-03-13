@@ -6,6 +6,13 @@
   <p> {{ item.bpm }} </p>
   <p> {{ item.time }} </p>
   
+  <div *ngIf = "item.lists.length">
+    <ul>
+      <li *ngFor="let list of item.lists">
+        <p>List: {{ list }}</p>
+      </li>
+    </ul>
+  </div>
   <div *ngIf="item.stats.length">
     <p>Stats:</p>
     <ul>
