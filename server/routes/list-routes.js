@@ -13,7 +13,8 @@ listRoutes.post('/new', (req, res, next) => {
 
   const newList = new List({
     title: req.body.listTitle,
-    user: req.user._id
+    //!!!CHANGE LATER!!!
+    user: '5aa8356af4a734fb2c4df356'
   });
 
   newList.save((err) => {
@@ -22,10 +23,11 @@ listRoutes.post('/new', (req, res, next) => {
       return;
     }
 
-    User.findByIdAndUpdate(req.user._id, { '$push': { 'lists': newList._id } }, err => {
+    User.findByIdAndUpdate('5aa8356af4a734fb2c4df356', { '$push': { 'lists': newList._id } }, err => {
       if (err) { res.status(500).json({ message: 'Error adding list to user db array' }) };
-      req.user.encryptedPassword = undefined;
-      newList.user = req.user;
+      // !!!UNCOMMENT LATER!!!
+      // req.user.encryptedPassword = undefined;
+      // newList.user = req.user;
       res.status(200).json(newList);
     })
   })

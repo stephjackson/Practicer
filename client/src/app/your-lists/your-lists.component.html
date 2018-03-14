@@ -1,0 +1,9 @@
+<h1> Your Sessions </h1>
+  <div>
+    <div *ngFor="let list of lists">
+      <h3> {{ list.title }} </h3>
+      <a [routerLink]="[list._id]">View Details</a>
+      <button (click)="deleteList(list._id)">Delete Item</button>
+    </div>
+  </div>
+  <app-create-list-form></app-create-list-form>

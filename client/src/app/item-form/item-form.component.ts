@@ -10,9 +10,10 @@ import { ItemService } from '../item.service';
 export class ItemFormComponent implements OnInit {
   newItem: any;
 
-
-  constructor(private route: ActivatedRoute,
-  private itemService: ItemService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private itemService: ItemService
+  ) { }
 
   ngOnInit() {
     this.newItem = {

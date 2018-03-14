@@ -6,11 +6,6 @@ import 'rxjs/add/operator/map';
 export class ItemService {
   BASE_URL: string = 'http://localhost:3000';
   constructor(private http: Http) {}
-
-  getList() {
-    return this.http.get(`${this.BASE_URL}/api/lists`)
-      .map((res) => res.json());
-  }
   
   getItemList(id) {
     return this.http.get(`${this.BASE_URL}/api/lists/${id}`)
