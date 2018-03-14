@@ -20,7 +20,6 @@ export class ItemListComponent implements OnInit {
   }
 
   deleteItem(id) {
-    console.log(id);
     this.itemService.deleteItem(id);
     location.reload();
   }

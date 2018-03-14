@@ -16,4 +16,9 @@ export class ListService {
     this.http.post(`${this.BASE_URL}/api/lists/new`, list)
     .subscribe(err => console.log(err))
   }
+
+  deleteList(id) {
+    return this.http.delete(`${this.BASE_URL}/api/lists/${id}`)
+    .subscribe(err => console.log(err))
+  }
 }

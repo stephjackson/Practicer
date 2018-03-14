@@ -90,7 +90,8 @@ listRoutes.delete('/:listid', (req, res, next) => {
       return;
     }
 
-    User.findByIdAndUpdate(req.user._id, { '$pull': { 'lists': req.params.listid } }, err => {
+    //!!! CHANGE USER ID LATER!!!
+    User.findByIdAndUpdate('5aa8356af4a734fb2c4df356', { '$pull': { 'lists': req.params.listid } }, err => {
       if (err) { res.status(500).json({ message: 'Error deleting list from user db array' }) };
       res.json({
         message: "List has been removed."

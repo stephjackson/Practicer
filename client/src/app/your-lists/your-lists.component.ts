@@ -18,4 +18,8 @@ export class YourListsComponent implements OnInit {
     })
   }
 
+  deleteList(id) {
+    this.listService.deleteList(id);
+    location.reload();
+  }
 }
