@@ -19,7 +19,8 @@ import { YourListsComponent } from './your-lists/your-lists.component';
 //Service Imports
 import { ItemService } from './item.service';
 import { ListService } from './list.service';
-import { CreateListFormComponent } from './create-list-form/create-list-form.component'
+import { CreateListFormComponent } from './create-list-form/create-list-form.component';
+import { ListDetailsComponent } from './list-details/list-details.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CreateListFormComponent } from './create-list-form/create-list-form.com
     EditItemFormComponent,
     HomeComponent,
     YourListsComponent,
-    CreateListFormComponent
+    CreateListFormComponent,
+    ListDetailsComponent
   ],
   imports: [
     BrowserModule,

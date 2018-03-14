@@ -9,7 +9,7 @@ export class ListService {
 
   getLists() {
     return this.http.get(`${this.BASE_URL}/api/lists`)
-      .map((res) => res.json());
+    .map((res) => res.json());
   }
 
   createList(list) {
@@ -17,8 +17,13 @@ export class ListService {
     .subscribe(err => console.log(err))
   }
 
+  getItemsInList(id) {
+    return this.http.get(`${this.BASE_URL}/api/lists/${id}`)
+    .map((res) => res.json())
+  }
+
   deleteList(id) {
-    return this.http.delete(`${this.BASE_URL}/api/lists/${id}`)
+    this.http.delete(`${this.BASE_URL}/api/lists/${id}`)
     .subscribe(err => console.log(err))
   }
 }
